@@ -13,6 +13,9 @@
 			<button type="submit" id="button2" onclick="return showResult(this)">Button 2</button>
 			<button type="submit" id="button3" onclick="return showResult(this)">Button 3</button>
 		</fieldset>
+		<div id = "button_holder">
+			
+		</div>
 	</form>
 
 	<script>
@@ -30,6 +33,7 @@
 			var option = parseInt(btn.id[6]);
 			if ((option - 1) === answer) {
 				document.getElementById('conversation').innerText = message_win;
+				document.getElementById('button_holder').innerHTML = '<button type="submit" onclick="return refresh()">Play again</button>';
 				setTimeout(refresh, 3000);
 			} else {
 				document.getElementById('conversation').innerText = message_loss;
