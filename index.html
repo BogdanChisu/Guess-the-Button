@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Guess the button</title>
+	<meta charset='utf-8'>
+</head>
+<body>
+	<form>
+		<fieldset>
+			<legend>Guess the button and win a prize</legend>
+			<button type="submit" id="button1" onclick="return showResult(this)">Button 1</button>
+			<button type="submit" id="button2" onclick="return showResult(this)">Button 2</button>
+			<button type="submit" id="button3" onclick="return showResult(this)">Button 3</button>
+		</fieldset>
+	</form>
+
+	<script>
+		var nr_buttons = 3;
+		var message_win = 'YOU WIN!!!';
+		var message_loss = 'Try again';
+
+		function getRandomInt(max) {
+			return Math.floor(Math.random() * Math.floor(max))
+		}
+
+		var answer = getRandomInt(nr_buttons);
+
+		function showResult(btn){
+			var option = parseInt(btn.id[6]);
+			if ((option - 1) === answer) {
+				alert(message_win);
+				location.reload();
+			} else {
+				alert(message_loss);
+			}
+			return false;
+		}
+	</script>
+</body>
+</html>
