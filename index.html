@@ -33,8 +33,7 @@
 		var answer = getRandomInt(nr_buttons);
 
 		function showResult(btn){
-			var option = parseInt(btn.id[6]);
-			if ((option - 1) === answer) {
+			if ((btn.id[6] - 1) === answer) {
 				document.getElementById('conversation').innerText = message_win;
 				document.getElementById('button_holder').innerHTML = '<button type="submit" onclick="return refresh()">Play again</button>';
 				setTimeout(refresh, 3000);
