@@ -1,0 +1,9 @@
+h3 {
+	text-align: center;
+}
+
+#button_holder, #myBtns {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

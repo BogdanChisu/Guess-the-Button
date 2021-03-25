@@ -3,20 +3,23 @@
 <head>
 	<title>Guess the button</title>
 	<meta charset='utf-8'>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
 	<h3 id="conversation">Select a button below</h3>
-	<form>
-		<fieldset>
-			<legend>Guess the button and win a prize</legend>
-			<button type="submit" id="button1" onclick="return showResult(this)">Button 1</button>
-			<button type="submit" id="button2" onclick="return showResult(this)">Button 2</button>
-			<button type="submit" id="button3" onclick="return showResult(this)">Button 3</button>
-		</fieldset>
-		<div id = "button_holder">
-			
-		</div>
-	</form>
+	<div id="myBtns">
+		<form>
+			<fieldset>
+				<legend>Guess the button and win a prize</legend>
+				<button type="submit" id="button1" onclick="return showResult(this)">Button 1</button>
+				<button type="submit" id="button2" onclick="return showResult(this)">Button 2</button>
+				<button type="submit" id="button3" onclick="return showResult(this)">Button 3</button>
+				<div id = "button_holder">
+				
+				</div>
+			</fieldset>
+		</form>
+	</div>
 
 	<script>
 		var nr_buttons = 3;
