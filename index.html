@@ -24,13 +24,9 @@
 	<script>
 		var nr_buttons = 3;
 		var message_win = 'YOU WIN!!! A new round will start in 3s';
-		var message_loss = 'Try again';
+		var message_try = 'Try again';
 
-		function getRandomInt(max) {
-			return Math.floor(Math.random() * Math.floor(max))
-		}
-
-		var answer = getRandomInt(nr_buttons);
+		var answer = Math.floor(Math.random() * nr_buttons);
 
 		function showResult(btn){
 			if ((btn.id[6] - 1) === answer) {
@@ -38,7 +34,7 @@
 				document.getElementById('button_holder').innerHTML = '<button type="submit" onclick="return refresh()">Play again</button>';
 				setTimeout(refresh, 3000);
 			} else {
-				document.getElementById('conversation').innerText = message_loss;
+				document.getElementById('conversation').innerText = message_try;
 			}
 			return false;
 		}
