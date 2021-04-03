@@ -6,32 +6,58 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<h3 id="conversation">Select a button below</h3>
+	<h3 id="conversation">Guess the button to win a prize</h3>
 	<div id="myBtns">
 		<form>
 			<fieldset>
+				<label for="btns_set">Set the number of buttons: </label>
+				<input type="range" name="btns_set" id="btns_set" min="3" max="100" step="1" value="3" onchange="buildGrid(this.value)">
+				<output id="set-output" value="">
+			</fieldset>
+			<fieldset id="grid">
 				<legend>Guess the button and win a prize</legend>
-				<button type="submit" id="button1" onclick="return showResult(this)">Button 1</button>
-				<button type="submit" id="button2" onclick="return showResult(this)">Button 2</button>
-				<button type="submit" id="button3" onclick="return showResult(this)">Button 3</button>
-				<div id = "button_holder">
 				
-				</div>
+			</fieldset>
+			<fieldset id="button_holder" class="play_again">
+				
 			</fieldset>
 		</form>
 	</div>
 
 	<script>
-		var nr_buttons = 3;
+		var answer = 0;
+
 		var message_win = 'YOU WIN!!! A new round will start in 3s';
 		var message_try = 'Try again';
 
-		var answer = Math.floor(Math.random() * nr_buttons);
+		const btns_nr = document.querySelector('#btns_set');
+		const show_nr = document.querySelector('#set-output');
+
+		show_nr.textContent = btns_nr.value;
+
+		btns_nr.addEventListener('input', function() {
+			show_nr.textContent=btns_nr.value;
+		});
+
+		function buildGrid(val) {
+			document.getElementById('set-output').value = val;
+			document.getElementById('btns_set').disabled = true;
+			var nr_buttons = val;
+			answer = getAnswer(val);
+			alert("answer is " + answer);
+			for (var i = 0; i < nr_buttons; i++) {
+				document.getElementById('grid').innerHTML += '<button type="submit" class="btn" id="button'+ (i + 1) +'" onclick="return showResult(this)">' + (i + 1) +'</button>';
+		  	}
+		}
+		
+		function getAnswer(number) {
+			return Math.floor(Math.random() * number);
+		}
 
 		function showResult(btn){
-			if ((btn.id[6] - 1) === answer) {
+			if (btn.id === ("button" + answer)) {
 				document.getElementById('conversation').innerText = message_win;
-				document.getElementById('button_holder').innerHTML = '<button type="submit" onclick="return refresh()">Play again</button>';
+				document.getElementById('button_holder').innerHTML = '<button type="submit" class="btn2" onclick="return refresh()">Play again</button>';
 				setTimeout(refresh, 3000);
 			} else {
 				document.getElementById('conversation').innerText = message_try;

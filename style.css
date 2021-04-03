@@ -7,3 +7,17 @@ h3 {
 	justify-content: center;
 	align-items: center;
 }
+
+.btn {
+	width: 3vw;
+	height: 4vh;
+	margin: 4px;
+}
+
+.btn2 {
+	width: 4vw;
+}
+
+.play_again {
+	border-style: none;
+}
