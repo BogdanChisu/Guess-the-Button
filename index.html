@@ -51,7 +51,11 @@
 		}
 		
 		function getAnswer(number) {
-			return Math.floor(Math.random() * number);
+			var calc = Math.floor(Math.random() * number);
+			if (calc === 0) {
+				calc++;
+			}
+			return calc;
 		}
 
 		function showResult(btn){
