@@ -44,9 +44,13 @@
 			document.getElementById('btns_set').disabled = true;
 			var nr_buttons = val;
 			answer = getAnswer(val);
-			alert("answer is " + answer);
+			var row_nr = Math.ceil(Math.sqrt(nr_buttons));
+			alert("answer is " + answer + " row has " + row_nr);
 			for (var i = 0; i < nr_buttons; i++) {
 				document.getElementById('grid').innerHTML += '<button type="submit" class="btn" id="button'+ (i + 1) +'" onclick="return showResult(this)">' + (i + 1) +'</button>';
+				if (((i + 1) % row_nr) === 0) {
+					document.getElementById('grid').innerHTML += '<br>';
+				}
 		  	}
 		}
 		
@@ -64,6 +68,7 @@
 				document.getElementById('button_holder').innerHTML = '<button type="submit" class="btn2" onclick="return refresh()">Play again</button>';
 				setTimeout(refresh, 3000);
 			} else {
+				btn.style.background = '#29E5B2';
 				document.getElementById('conversation').innerText = message_try;
 			}
 			return false;
